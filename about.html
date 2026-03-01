@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRIGHTOLOGY • about the atelier</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google fonts: consistent with main -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Clash+Display:wght@300;400;500;600;700&family=Synonym:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      background: #0b0a0a;
+      font-family: 'Archivo', sans-serif;
+      color: #f0edea;
+      scroll-behavior: smooth;
+    }
+
+    /* subtle grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 128px 128px;
+    }
+
+    /* reuse gold accents */
+    h1, h2, h3, h4 {
+      font-family: 'Clash Display', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .gold {
+      color: #c9a86c;
+    }
+
+    .separator {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a86c, transparent);
+      margin: 20px 0;
+    }
+
+    .gold-separator {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a86c, transparent);
+      margin: 20px auto;
+      animation: glowPulse 3s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { opacity: 0.4; width: 60px; }
+      100% { opacity: 1; width: 100px; box-shadow: 0 0 15px #c9a86c; }
+    }
+
+    /* navbar matching main site */
+    nav {
+      position: sticky;
+      top: 8px;
+      z-index: 1000;
+      width: 100%;
+      padding: 0 12px;
+      margin-bottom: 20px;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 18px;
+      background: rgba(10, 10, 10, 0.3);
+      backdrop-filter: blur(20px) saturate(200%);
+      -webkit-backdrop-filter: blur(20px) saturate(200%);
+      border: 1px solid rgba(201, 168, 108, 0.2);
+      border-radius: 60px;
+      box-shadow: 0 12px 30px -10px black;
+    }
+
+    .logo-image img {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(201,168,108,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #f0eae5;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 4px;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #c9a86c;
+      border-bottom-color: #c9a86c;
+    }
+
+    .nav-icon {
+      color: #c9a86c;
+      font-size: 22px;
+      background: rgba(201,168,108,0.1);
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      border: 1px solid rgba(201,168,108,0.3);
+    }
+
+    /* about hero */
+    .about-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at 70% 30%, rgba(201,168,108,0.08) 0%, transparent 50%);
+    }
+
+    .about-hero h1 {
+      font-size: clamp(48px, 12vw, 110px);
+      line-height: 1;
+    }
+
+    .about-hero h1 span {
+      display: block;
+      font-style: italic;
+      color: #c9a86c;
+    }
+
+    /* philosophy */
+    .philosophy {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .philosophy-text p {
+      font-size: 18px;
+      line-height: 1.8;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+
+    .signature-block {
+      margin-top: 30px;
+      font-family: 'Synonym', serif;
+      border-left: 3px solid #c9a86c;
+      padding-left: 25px;
+    }
+
+    .signature-block i {
+      color: #c9a86c;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .philosophy-image img {
+      width: 100%;
+      border-radius: 4px;
+      filter: grayscale(0.3) contrast(1.2);
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.6), -5px -5px 15px rgba(201,168,108,0.1);
+    }
+
+    /* legacy strip */
+    .legacy-strip {
+      background: #0f0d0d;
+      padding: 50px 20px;
+      border-top: 1px solid rgba(201,168,108,0.15);
+      border-bottom: 1px solid rgba(201,168,108,0.15);
+    }
+
+    .legacy-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .legacy-item {
+      flex: 1 1 200px;
+    }
+
+    .legacy-number {
+      font-size: 64px;
+      font-weight: 700;
+      font-family: 'Clash Display', sans-serif;
+      color: #c9a86c;
+      line-height: 1;
+    }
+
+    .legacy-label {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    /* founder section */
+    .founder {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .founder-image {
+      position: relative;
+    }
+
+    .founder-image img {
+      width: 100%;
+      border-radius: 2px;
+      border: 2px solid rgba(201,168,108,0.3);
+      padding: 6px;
+    }
+
+    .founder-image::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      background: linear-gradient(45deg, #c9a86c, transparent);
+      z-index: -1;
+      border-radius: 2px;
+    }
+
+    .founder h2 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .founder-role {
+      color: #c9a86c;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    /* values */
+    .values-section {
+      background: #030202;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .values-grid {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .value-card {
+      background: #141111;
+      padding: 40px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(201,168,108,0.1);
+      transition: 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: #c9a86c;
+      transform: translateY(-8px);
+    }
+
+    .value-icon {
+      font-size: 40px;
+      color: #c9a86c;
+      margin-bottom: 20px;
+    }
+
+    /* cta banner */
+    .cta-banner {
+      background: #c9a86c;
+      color: #0b0a0a;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .cta-banner h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: transparent;
+      border: 2px solid #0b0a0a;
+      color: #0b0a0a;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0b0a0a;
+      color: #c9a86c;
+    }
+
+    /* footer */
+    footer {
+      background: #030202;
+      padding: 40px 20px;
+      text-align: center;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .philosophy, .founder {
+        grid-template-columns: 1fr;
+      }
+      .nav-container {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+    }
+
+
+    /* ===== EXACT NAVBAR STYLES FROM INDEX ===== */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 8px;
+  z-index: 1000;
+  padding: 0 12px;
+}
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  background: rgba(10, 10, 10, 0.3);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(201, 168, 108, 0.2);
+  border-radius: 60px;
+  box-shadow: 0 12px 30px -10px black, 0 0 0 1px rgba(201,168,108,0.1) inset;
+  transition: all 0.3s ease;
+}
+.logo-image img {
+  height: 38px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(201,168,108,0.3));
+  transition: 0.3s;
+  max-width: 150px;
+}
+.logo-image:hover img {
+  filter: drop-shadow(0 0 16px rgba(201,168,108,0.7));
+  transform: scale(1.05);
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #f0eae5;
+  font-size: clamp(11px, 2.5vw, 13px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 1.5px solid transparent;
+  padding-bottom: 4px;
+  transition: 0.2s;
+  white-space: nowrap;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: #c9a86c;
+  transition: width 0.3s ease, left 0.3s ease;
+  box-shadow: 0 0 6px #c9a86c;
+}
+.nav-links a:hover { 
+  color: #fff; 
+  text-shadow: 0 0 8px #c9a86c; 
+}
+.nav-links a:hover::after { 
+  width: 100%; 
+  left: 0; 
+}
+.nav-links a[style*="color:#c9a86c"]::after {
+  width: 100%;
+  left: 0;
+}
+.nav-icon {
+  color: #c9a86c;
+  font-size: 22px;
+  background: rgba(201, 168, 108, 0.1);
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+  border: 1px solid rgba(201, 168, 108, 0.3);
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+.nav-icon:hover {
+  background: rgba(201,168,108,0.2);
+  box-shadow: 0 0 20px rgba(201,168,108,0.4);
+  transform: rotate(15deg);
+}
+
+/* Mobile navbar styles - exact same as index */
+@media (max-width: 800px) {
+  .nav-container { 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 6px 12px; 
+    padding: 10px 16px; 
+  }
+  .nav-links { 
+    order: 3; 
+    width: 100%; 
+    justify-content: center; 
+    gap: min(20px, 4vw); 
+  }
+  .nav-links a { 
+    font-size: 12px; 
+    letter-spacing: 1.5px; 
+    white-space: nowrap; 
+  }
+  .logo-image img { 
+    height: 34px; 
+  }
+  .nav-icon { 
+    width: 38px; 
+    height: 38px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links { 
+    gap: 12px; 
+    flex-wrap: wrap; 
+  }
+  .nav-links a { 
+    font-size: 10px; 
+    letter-spacing: 1px; 
+  }
+  .nav-container { 
+    padding: 8px 12px; 
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-links a { 
+    font-size: 9px; 
+    letter-spacing: 0.5px; 
+  }
+}
+
+/* Scroll effect for navbar */
+.nav-container.scrolled {
+  background: rgba(8, 6, 6, 0.5);
+  backdrop-filter: blur(22px) saturate(200%);
+  border-color: rgba(201, 168, 108, 0.4);
+}
+  </style>
+</head>
+<body>
+
+  <!-- SAME NAVIGATION (now points to main page sections via id, but ABOUT is current page) 
+       to keep consistency, we link back to main sections – replace with your actual paths -->
+ <!-- NAVIGATION - exact same as index.html -->
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo-image"><img src="logo.png" alt="BRIGHTOLOGY" onerror="this.src='https://placehold.co/180x40/222?text=BRIGHTOLOGY'"></a>
+    <div class="nav-links">
+      <a href="index.html#home">Home</a>
+      <a href="about.html" style="color:#c9a86c;">About</a>
+     
+      <a href="index.html#gallery">Work</a>
+      <a href="index.html#contact">Connect</a>
+    </div>
+    <a href="gallery.html">
+              <div class="nav-icon"><i class="fas fa-images"></i></div></a>
+  </div>
+</nav>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero" data-aos="fade-up">
+    <div>
+      <div class="hero-sub" style="color:#c9a86c; letter-spacing:4px; margin-bottom:10px;"><i class="fa-regular fa-gem"></i> EST. 2010</div>
+      <h1>
+        <span>BEHIND THE</span>
+        <span>SEAM</span>
+      </h1>
+      <div class="gold-separator"></div>
+      <p style="max-width:600px; margin:20px auto 0; font-size:18px;">Craft, code, and couture — where heritage meets the new guard.</p>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY (story + image) -->
+  <div class="philosophy">
+    <div class="philosophy-text" data-aos="fade-right">
+      <h2 style="font-size:32px;">the <span class="gold">philosophy</span></h2>
+      <div class="separator"></div>
+      <p>Brightology isn’t just a fashion institute — it’s a rebellion against fast fashion. We train eyes to see fabric like skin, and stitches like signatures. Every garment is an archive of patience.</p>
+      <p>Founded in Ebonyi, shaped between London and Milan, we’ve spent 15 years distilling masculine elegance into its purest form: architectural shoulders, silent linings, and the weight of presence.</p>
+      <div class="signature-block">
+        <i class="fa-regular fa-quote-right"></i>
+        <p style="font-size:22px;">"We don't follow trends. We tailor character."</p>
+        <p>— Bright, CD</p>
+      </div>
+    </div>
+    <div class="philosophy-image" data-aos="fade-left">
+      <img src="im4.png" alt="atelier interior" onerror="this.src='https://placehold.co/1000x1400/2a2a2a/c9a86c?text=ATELIER+AMBIENCE'">
+    </div>
+  </div>
+
+  <!-- LEGACY STRIP (numbers) -->
+  <div class="legacy-strip">
+    <div class="legacy-grid">
+      <div class="legacy-item" data-aos="zoom-in"><div class="legacy-number" data-target="15">15</div><div class="legacy-label">years of craft</div></div>
+      <div class="legacy-item" data-aos="zoom-in" data-aos-delay="100"><div class="legacy-number" data-target="2000">2000</div><div class="legacy-label">alumni worldwide</div></div>
+      <div class="legacy-item" data-aos="zoom-in" data-aos-delay="200"><div class="legacy-number" data-target="47">47</div><div class="legacy-label">industry awards</div></div>
+      <div class="legacy-item" data-aos="zoom-in" data-aos-delay="300"><div class="legacy-number" data-target="12">12</div><div class="legacy-label">atelier locations</div></div>
+    </div>
+  </div>
+
+  <!-- FOUNDER STORY -->
+  <div class="founder">
+    <div class="founder-image" data-aos="fade-right">
+      <img src="image.png" alt="bright oluwaseun" onerror="this.src='https://placehold.co/800x1000/2a2a2a/c9a86c?text=BRIGHT+OLUWASEUN'">
+    </div>
+    <div data-aos="fade-left">
+      <h2>bright <span class="gold">Chimezie</span></h2>
+      <div class="founder-role">creative director · founder</div>
+      <p style="margin-bottom:20px;">A tailor who apprenticed the soul of African texture, and the speed of digital design. He has dressed entrepreneurs, artists, and those who believe clothing is the first architecture of the self.</p>
+      <p>“Brightology is my letter to the next generation — that a man’s garment can hold his story, his culture, and his future in every seam.”</p>
+    </div>
+  </div>
+
+  <!-- VALUES CARDS -->
+  <div class="values-section">
+    <h2 style="font-size:42px;">the <span class="gold">creed</span></h2>
+    <div class="gold-separator"></div>
+    <div class="values-grid">
+      <div class="value-card" data-aos="flip-up">
+        <div class="value-icon"><i class="fa-regular fa-scissors"></i></div>
+        <h3>zero waste</h3>
+        <p style="opacity:0.7;">Every scrap reborn as accessories. We design with nature in mind.</p>
+      </div>
+      <div class="value-card" data-aos="flip-up" data-aos-delay="100">
+        <div class="value-icon"><i class="fa-regular fa-compass"></i></div>
+        <h3>silhouette first</h3>
+        <p>Proportion, line, and movement — the grammar of elegance.</p>
+      </div>
+      <div class="value-card" data-aos="flip-up" data-aos-delay="200">
+        <div class="value-icon"><i class="fa-regular fa-hand-sparkles"></i></div>
+        <h3>hand-stitch soul</h3>
+        <p>Machines assist, but the final touch is always human.</p>
+      </div>
+      <div class="value-card" data-aos="flip-up" data-aos-delay="300">
+        <div class="value-icon"><i class="fa-regular fa-globe"></i></div>
+        <h3>global texture</h3>
+        <p>Wool from Italy, linen from Ireland, spirit from Africa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALL TO ACTION (back to main) -->
+  <div class="cta-banner">
+    <h3>ready to craft your story?</h3>
+    <a href="index.html#contact" class="btn"><i class="fa-regular fa-pen-to-square"></i> book consultation</a>
+  </div>
+
+  <!-- FOOTER (minimal) -->
+  <footer>
+    <p style="letter-spacing:2px;">BRIGHTOLOGY · 2026 · menswear avant‑garde</p>
+    <p style="margin-top:20px; font-size:12px;">© all rights stitched with care</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true, mirror: false });
+
+    // simple counter animation for legacy numbers
+    const counters = document.querySelectorAll('.legacy-number');
+    const speed = 200;
+
+    const startCounting = (counter) => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      let count = 0;
+      const inc = target / 30;
+      const update = () => {
+        count += inc;
+        if (count < target) {
+          counter.innerText = Math.ceil(count);
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      update();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const num = entry.target;
+          startCounting(num);
+          observer.unobserve(num);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    counters.forEach(c => observer.observe(c));
+
+    // image fallback
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.complete || img.naturalWidth === 0) {
+        img.onerror = () => {
+          img.src = 'https://placehold.co/800x1000/1a1a1a/c9a86c?text=BRIGHTOLOGY';
+        };
+      }
+    });
+
+
+
+    // ========================
+// NAV SCROLL EFFECT (exact same as index)
+// ========================
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav-container');
+  if (window.scrollY > 60) {
+    nav.style.background = 'rgba(8, 6, 6, 0.5)';
+    nav.style.backdropFilter = 'blur(22px) saturate(200%)';
+    nav.style.borderColor = 'rgba(201, 168, 108, 0.4)';
+  } else {
+    nav.style.background = 'rgba(10, 10, 10, 0.3)';
+    nav.style.borderColor = 'rgba(201,168,108,0.2)';
+  }
+});
+  </script>
+</body>
+</html>
